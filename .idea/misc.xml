@@ -10,6 +10,12 @@
       </list>
     </option>
   </component>
+  <component name="ProjectResources">
+    <resource url="http://www.springframework.org/schema/beans/spring-beans-4.1.xsd" location="$USER_HOME$/.IntelliJIdea2017.2/system/extResources/d823b691_spring-beans-4.1.xsd" />
+    <resource url="http://www.springframework.org/schema/jms/spring-jms-4.1.xsd" location="$USER_HOME$/.IntelliJIdea2017.2/system/extResources/77a87df1_spring-jms-4.1.xsd" />
+    <resource url="http://www.springframework.org/schema/oxm/spring-oxm-4.1.xsd" location="$USER_HOME$/.IntelliJIdea2017.2/system/extResources/23116971_spring-oxm-4.1.xsd" />
+    <resource url="http://www.springframework.org/schema/tool/spring-tool-4.1.xsd" location="$USER_HOME$/.IntelliJIdea2017.2/system/extResources/944e3c63_spring-tool-4.1.xsd" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
