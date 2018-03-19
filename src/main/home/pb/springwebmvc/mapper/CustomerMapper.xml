@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="home.pb.springwebmvc.service.CustomerMapper">
+  <resultMap id="BaseResultMap" type="home.pb.springwebmvc.entity.Customer">
+    <id column="customer_id" jdbcType="INTEGER" property="customer_id" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customer_name" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contact_name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="sale_employee_id" jdbcType="INTEGER" property="sale_employee_id" />
+    <result column="credit_limit" jdbcType="INTEGER" property="credit_limit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_id, customer_name, contact_name, phone, address, province, city, sale_employee_id, 
+    credit_limit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where customer_id = #{customer_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer
+    where customer_id = #{customer_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="home.pb.springwebmvc.entity.Customer">
+    insert into customer (customer_id, customer_name, contact_name, 
+      phone, address, province, 
+      city, sale_employee_id, credit_limit
+      )
+    values (#{customer_id,jdbcType=INTEGER}, #{customer_name,jdbcType=VARCHAR}, #{contact_name,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{sale_employee_id,jdbcType=INTEGER}, #{credit_limit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="home.pb.springwebmvc.entity.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customer_id != null">
+        customer_id,
+      </if>
+      <if test="customer_name != null">
+        customer_name,
+      </if>
+      <if test="contact_name != null">
+        contact_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="sale_employee_id != null">
+        sale_employee_id,
+      </if>
+      <if test="credit_limit != null">
+        credit_limit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customer_id != null">
+        #{customer_id,jdbcType=INTEGER},
+      </if>
+      <if test="customer_name != null">
+        #{customer_name,jdbcType=VARCHAR},
+      </if>
+      <if test="contact_name != null">
+        #{contact_name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="sale_employee_id != null">
+        #{sale_employee_id,jdbcType=INTEGER},
+      </if>
+      <if test="credit_limit != null">
+        #{credit_limit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="home.pb.springwebmvc.entity.Customer">
+    update customer
+    <set>
+      <if test="customer_name != null">
+        customer_name = #{customer_name,jdbcType=VARCHAR},
+      </if>
+      <if test="contact_name != null">
+        contact_name = #{contact_name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="sale_employee_id != null">
+        sale_employee_id = #{sale_employee_id,jdbcType=INTEGER},
+      </if>
+      <if test="credit_limit != null">
+        credit_limit = #{credit_limit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where customer_id = #{customer_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="home.pb.springwebmvc.entity.Customer">
+    update customer
+    set customer_name = #{customer_name,jdbcType=VARCHAR},
+      contact_name = #{contact_name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      sale_employee_id = #{sale_employee_id,jdbcType=INTEGER},
+      credit_limit = #{credit_limit,jdbcType=INTEGER}
+    where customer_id = #{customer_id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="home.pb.springwebmvc.entity.Customer">
+    <id column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="sale_employee_id" jdbcType="INTEGER" property="saleEmployeeId" />
+    <result column="credit_limit" jdbcType="INTEGER" property="creditLimit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_id, customer_name, contact_name, phone, address, province, city, sale_employee_id, 
+    credit_limit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="home.pb.springwebmvc.entity.Customer">
+    insert into customer (customer_id, customer_name, contact_name, 
+      phone, address, province, 
+      city, sale_employee_id, credit_limit
+      )
+    values (#{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{contactName,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{saleEmployeeId,jdbcType=INTEGER}, #{creditLimit,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="home.pb.springwebmvc.entity.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="saleEmployeeId != null">
+        sale_employee_id,
+      </if>
+      <if test="creditLimit != null">
+        credit_limit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="saleEmployeeId != null">
+        #{saleEmployeeId,jdbcType=INTEGER},
+      </if>
+      <if test="creditLimit != null">
+        #{creditLimit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="home.pb.springwebmvc.entity.Customer">
+    update customer
+    <set>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="saleEmployeeId != null">
+        sale_employee_id = #{saleEmployeeId,jdbcType=INTEGER},
+      </if>
+      <if test="creditLimit != null">
+        credit_limit = #{creditLimit,jdbcType=INTEGER},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="home.pb.springwebmvc.entity.Customer">
+    update customer
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      sale_employee_id = #{saleEmployeeId,jdbcType=INTEGER},
+      credit_limit = #{creditLimit,jdbcType=INTEGER}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+</mapper>
