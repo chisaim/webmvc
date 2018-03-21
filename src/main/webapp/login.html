@@ -94,43 +94,45 @@
 
 <script type="text/javascript">
 
+
     $("#loginSubmit").click(function () {
         var formdata = {
-            username:$('#username').val(),
-            password:$('#password').val()
+            username: $('#username').val(),
+            password: $('#password').val()
         };
 
         $.post({
-            url:"login.do",
-            data: JSON.stringify(formdata),
-            dataType:"json",
-            contentType: "application/json;charset=UTF-8",
-            success: function(data) {
-                var ss = JSON.stringify(data);
-                alert(ss)
-                window.location.href="main.html"
-            },
-            error:function () {
-                alert("ajax发送数据报错。")
-            }
-        });
-/*
-        $.ajax({
             url: "login.do",
-            type: "POST",
-            contentType: "application/json;charset=UTF-8",
-            dataType: "json",
             data: JSON.stringify(formdata),
-            async: true,
-            success: function(data) {
+            dataType: "json",
+            contentType: "application/json;charset=UTF-8",
+            success: function (data) {
                 var ss = JSON.stringify(data);
-                alert(ss)
+                alert(ss);
+                window.location.href = "main.html"
             },
-            error:function () {
+            error: function () {
                 alert("ajax发送数据报错。")
             }
         });
-*/
+        /*
+                $.ajax({
+                    url: "login.do",
+                    type: "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    data: JSON.stringify(formdata),
+                    async: true,
+                    success: function(data) {
+                        var ss = JSON.stringify(data);
+                        alert(ss)
+                    },
+                    error:function () {
+                        alert("ajax发送数据报错。")
+                    }
+                });
+
+        */
 
     })
 </script>

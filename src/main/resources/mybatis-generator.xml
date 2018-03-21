@@ -119,7 +119,7 @@
                 3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="home.pb.springwebmvc.service" targetProject="src/main">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="home.pb.springwebmvc.dao" targetProject="src/main">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="false"/>
             <!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查

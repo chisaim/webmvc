@@ -1,4 +1,4 @@
-package home.pb.springwebmvc.service;
+package home.pb.springwebmvc.dao;
 
 import home.pb.springwebmvc.entity.Customer;
 
