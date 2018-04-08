@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="jdbc.properties"/>
+    <classPathEntry location="${classPath}"/>
+    <context id="default">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}" userId="${jdbc.username}"
+                        password="${jdbc.password}"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="home.pb.springwebmvc.entity"
+                            targetProject="${project_java}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="constructorBased" value="true"/>
+            <property name="trimStrings" value="true"/>
+
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="home.pb.springwebmvc.mapper"
+                         targetProject="${project_res}">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="home.pb.springwebmvc.dao"
+                             targetProject="${project_java}" type="ANNOTATEDMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <table schema="${schemaName}" tableName="t_user"
+               domainObjectName="User" enableCountByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <columnOverride column="user_sex" jdbcType="TINYINT" property="userSex" javaType="java.lang.Short"/>
+            <columnOverride column="is_delete" jdbcType="TINYINT" property="isDelete" javaType="java.lang.Short"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

@@ -22,6 +22,8 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.2.7.RELEASE" />
+          <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.1.6" />
+          <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.5" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.4" />
           <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />

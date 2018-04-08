@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <properties resource="jdbc.properties"/>
+    <classPathEntry location="C:\Tools\maven\repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
+    <context id="mybatis" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" >
+        </jdbcConnection>
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="home.pb.springwebmvc.entity" targetProject="src/main">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="home.pb.springwebmvc.mapper" targetProject="src/main">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="home.pb.springwebmvc.dao" targetProject="src/main">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+        <table schema="site" tableName="customer"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="false"/>
+            <property name="modelOnly" value="false"/>
+            <columnOverride column="customer_id" property="customer_id"/>
+            <columnOverride column="customer_name" property="customer_name"/>
+            <columnOverride column="contact_name" property="contact_name"/>
+            <columnOverride column="phone" property="phone"/>
+            <columnOverride column="address" property="address"/>
+            <columnOverride column="province" property="province"/>
+            <columnOverride column="city" property="city"/>
+            <columnOverride column="sale_employee_id" property="sale_employee_id"/>
+            <columnOverride column="credit_limit" property="credit_limit"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -19,6 +19,22 @@ public class Customer {
 
     private Integer credit_limit;
 
+    public Customer(Integer customer_id, String customer_name, String contact_name, String phone, String address, String province, String city, Integer sale_employee_id, Integer credit_limit) {
+        this.customer_id = customer_id;
+        this.customer_name = customer_name;
+        this.contact_name = contact_name;
+        this.phone = phone;
+        this.address = address;
+        this.province = province;
+        this.city = city;
+        this.sale_employee_id = sale_employee_id;
+        this.credit_limit = credit_limit;
+    }
+
+    public Customer() {
+        super();
+    }
+
     public Integer getCustomer_id() {
         return customer_id;
     }

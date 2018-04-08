@@ -1,6 +1,10 @@
 package home.pb.springwebmvc.controller;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.StringUtil;
 import home.pb.springwebmvc.entity.Customer;
-import home.pb.springwebmvc.model.Page;
+import home.pb.springwebmvc.entity.CustomerExample;
+import home.pb.springwebmvc.model.Pages;
 import home.pb.springwebmvc.model.PageParam;
 import home.pb.springwebmvc.service.CustomerService;
 import net.sf.json.JSONObject;
@@ -10,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -42,13 +47,32 @@ public class LoginController {
 
     @RequestMapping(value = "/test2.do",method = RequestMethod.POST)
     @ResponseBody
-    public JSONObject test2(int limit,int offset,String order){
-        JSONObject result = new JSONObject();
-        PageParam pageParam = new PageParam(offset,limit,null,order);
+    public Pages<Customer> test2(HttpServletRequest request){
 
-        Page page = customerService.selectByPrimaryKey(pageParam);
-        result.put("total",page.getTotal());
-        result.put("rows",page.getRows());
-        return result;
+        String limit = request.getParameter("limit");
+        String pageNumber = request.getParameter("offset");
+        String order = request.getParameter("order");
+
+        // 当前页数
+        int nowPaged = Integer.parseInt(null == pageNumber ? "1" : pageNumber);
+        // 每页显示页数
+        int limitd = Integer.parseInt(null == limit ? "10" : limit);
+
+        Pages<Customer> pages = new Pages<>();
+        PageHelper.startPage(nowPaged,limitd);
+
+        CustomerExample example = new CustomerExample();
+        CustomerExample.Criteria criteria = example.createCriteria();
+
+        example.setOrderByClause(order);
+
+        List<Customer> customerList = customerService.getAllUserByExample(example);
+
+        PageInfo<Customer> pageInfo = new PageInfo<>(customerList);
+        int total = (int) pageInfo.getTotal();
+
+        pages.setTotal(total);
+        pages.setRows(customerList);
+        return pages;
     }
 }

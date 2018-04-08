@@ -12,6 +12,7 @@ $(document).ready(function () {
         queryParams: function (params) {
             params.limit = this.pageSize;
             params.offset = this.pageNumber;
+            params.order = "customer_id desc";
             return params;
         },
         striped: true,
