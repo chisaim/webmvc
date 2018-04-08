@@ -1,11 +1,15 @@
 package home.pb.springwebmvc.controller;
 import home.pb.springwebmvc.entity.Customer;
+import home.pb.springwebmvc.model.Page;
+import home.pb.springwebmvc.model.PageParam;
 import home.pb.springwebmvc.service.CustomerService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LoginController {
@@ -25,13 +29,26 @@ public class LoginController {
         return requestJson.toString();
     }
 
-    @RequestMapping(value = "/test.do",method = RequestMethod.GET)
+    @RequestMapping(value = "/test.do",method = RequestMethod.POST)
     @ResponseBody
-    public String test(){
+    public JSONObject test(HttpServletRequest request){
+        String limit = request.getParameter("limit");
+        String offset = request.getParameter("offset");
+        System.out.println("limit:" + limit + "--offset:" + offset);
+
         Customer customer = customerService.selectByPrimaryKey(1001);
-        System.out.println("customer:" + customer);
-        return customer.toString();
+        return JSONObject.fromObject(customer);
     }
 
+    @RequestMapping(value = "/test2.do",method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject test2(int limit,int offset,String order){
+        JSONObject result = new JSONObject();
+        PageParam pageParam = new PageParam(offset,limit,null,order);
 
+        Page page = customerService.selectByPrimaryKey(pageParam);
+        result.put("total",page.getTotal());
+        result.put("rows",page.getRows());
+        return result;
+    }
 }

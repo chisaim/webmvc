@@ -63,8 +63,14 @@
     </bean>
 
     <bean id="sqlFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="mapperLocations" value="classpath*:home/pb/springwebmvc/mapper/*.xml"/>
+        <property name="mapperLocations" value="classpath*:home/pb/springwebmvc/mapper/*Mapper.xml"/>
         <property name="dataSource" ref="dataSource"/>
+        <!--<property name="configLocation" value="classpath:mybatis-generator.xml"/>-->
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="home.pb.springwebmvc.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlFactory"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

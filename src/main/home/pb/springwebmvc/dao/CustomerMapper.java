@@ -1,17 +1,12 @@
 package home.pb.springwebmvc.dao;
 
 import home.pb.springwebmvc.entity.Customer;
+import home.pb.springwebmvc.model.Page;
+import home.pb.springwebmvc.model.PageParam;
 
 public interface CustomerMapper {
-    int deleteByPrimaryKey(Integer customer_id);
-
-    int insert(Customer record);
-
-    int insertSelective(Customer record);
 
     Customer selectByPrimaryKey(Integer customer_id);
 
-    int updateByPrimaryKeySelective(Customer record);
-
-    int updateByPrimaryKey(Customer record);
+    Page selectByPrimaryKey(PageParam pageParam);
 }
