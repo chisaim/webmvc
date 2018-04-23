@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
     <groupId>home.pb.springwebmvc</groupId>
     <artifactId>webmvc</artifactId>
@@ -7,7 +8,6 @@
     <version>1.0-SNAPSHOT</version>
     <name>webmvc Maven Webapp</name>
 
-    <!--版本控制-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>4.2.7.RELEASE</spring.version>
@@ -18,8 +18,14 @@
         <commons-lang>2.5</commons-lang>
         <commons-logging>1.2</commons-logging>
         <ezmorph>1.0.6</ezmorph>
+        <com.github.pagehelper.version>4.1.6</com.github.pagehelper.version>
         <mysql.mysql.connector.version>5.1.18</mysql.mysql.connector.version>
+        <org.mybatis.version>3.2.8</org.mybatis.version>
+        <org.mybatis-spring.version>1.3.2</org.mybatis-spring.version>
+        <mybatis-generator-core.version>1.3.2</mybatis-generator-core.version>
         <druid-version>0.1.18</druid-version>
+        <jackson-databind.version>2.9.0</jackson-databind.version>
+        <javax.servlet-api.version>2.5</javax.servlet-api.version>
         <json-lib>2.4</json-lib>
     </properties>
 
@@ -99,7 +105,7 @@
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
-            <version>4.1.6</version>
+            <version>${com.github.pagehelper.version}</version>
         </dependency>
         <!-- 通用包 -->
         <dependency>
@@ -128,17 +134,17 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.2.8</version>
+            <version>${org.mybatis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.2.3</version>
+            <version>${org.mybatis-spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.3.2</version>
+            <version>${mybatis-generator-core.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.json-lib</groupId>
@@ -149,7 +155,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.8.9</version>
+            <version>${jackson-databind.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
@@ -179,12 +185,22 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>${javax.servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
         <finalName>webmvc</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <port>8080</port>
+                    <server>tomcat7</server>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -192,6 +208,7 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
